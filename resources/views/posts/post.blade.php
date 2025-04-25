@@ -7,9 +7,16 @@
                 <div class="card">
                     <div class="card-header">{{ __('Dashboard') }}</div>
 
-                                <span>{{ $post->title }}</span>
-                                <div>{{ $post->content }}</div>
-                                <span>{{ $post->user->name }}</span>
+                    <div style="white-space:nowrap">
+                        <label for="post-title">{{ __('Title:') }}</label>
+                        <span id="post-title">{{ $post->title }}</span>
+                    </div>
+                    <label for="post-content">{{ __('Content:') }}</label>
+                    <div id="post-content">{{ $post->content }}</div>
+                    <div style="white-space:nowrap">
+                        <label for="post-author">{{ __('Author:') }}</label>
+                        <span id="post-author">{{ $post->user->name }}</span>
+                    </div>
 
                     @if (Auth::user() && Auth::user()->id == $post->user->id)
                         <a
@@ -33,6 +40,8 @@
                     @endif
 
 
+                    <br>
+                    {{ __('Comments:') }}
                         <ul>
                             @foreach($comments as $comment)
                                 <li>
@@ -66,6 +75,7 @@
                                         @endif
                                     @endif
                                 </li>
+                                <br>
                             @endforeach
 
                                 <li>
