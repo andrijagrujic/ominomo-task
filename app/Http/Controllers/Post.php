@@ -61,6 +61,11 @@ class Post extends Controller
         $comment->comment = $data['comment'];
         $comment->user()->associate($user);
         $comment->post()->associate($post);
+        if (array_key_exists('name', $data)) {
+            $comment->name = $data['name'];
+        } else {
+            $comment->name = $comment->user()->name;
+        }
         $comment->save();
         return redirect()->route('showPost', ['id'=> $id, 'post' => $post]);
     }

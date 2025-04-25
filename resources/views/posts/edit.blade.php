@@ -12,7 +12,7 @@
                                 <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Title') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="title" type="text" class="form-control" name="title" value="{{ $post->title }}" autocomplete="title" autofocus>
+                                    <input id="title" type="text" class="form-control @error('name') is-invalid @enderror" required name="title" value="{{ $post->title }}" autocomplete="title" autofocus>
 
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -26,7 +26,7 @@
                                 <label for="content" class="col-md-4 col-form-label text-md-end">{{ __('Content') }}</label>
 
                                 <div class="col-md-6">
-                                    <textarea id="content" class="form-control" name="content">{{ $post->content }}</textarea>
+                                    <textarea id="content" class="form-control @error('content') is-invalid @enderror" required name="content">{{ $post->content }}</textarea>
 
                                     @error('content')
                                     <span class="invalid-feedback" role="alert">
